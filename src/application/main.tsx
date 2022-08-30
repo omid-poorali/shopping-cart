@@ -1,6 +1,8 @@
 import "../styles/index.scss";
+import 'react-toastify/dist/ReactToastify.css';
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import { ErrorBoundary } from "./error-boundary";
 import { LoadingFallBack } from "./loading-fallback";
 import { Layout } from "components";
@@ -28,6 +30,7 @@ export const Application = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </ErrorBoundary>
   );
 }
