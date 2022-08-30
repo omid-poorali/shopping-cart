@@ -1,4 +1,4 @@
-import { Basket } from "components";
+import { Basket } from "./basket";
 
 export const Products = () => {
     return (

@@ -4,15 +4,17 @@
 @import "breakpoints";
 
 
-// layouts and components
-@import "../application/fallback/main.scss";
-@import "../components/layouts/desktop/main.scss";
-@import "../components/button/main.scss";
-@import "../components/card/main.scss";
-@import "../components/basket/main.scss";
-@import "../components/emptyBasket/main.scss";
-@import "../components/productCard/main.scss";
+// common components styles
+@import "../application/error-boundary/fallback/main.scss";
+@import "../application/loading-fallback/main.scss";
+@import "../components/ui-kit/button/main.scss";
+@import "../components/ui-kit/card/main.scss";
 
-// pages
-@import "../pages/notFound/main.scss";
-@import "../pages/systemError/main.scss"
+
+// page components styles
+@import "../pages/products/main.scss";
+@import "../pages/products/empty-basket/main.scss";
+@import "../pages/products/product/main.scss";
+@import "../pages/products/basket/main.scss";
+@import "../pages/products/basket/item/main.scss";
+@import "../pages/not-found/main.scss";

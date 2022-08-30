@@ -1,6 +1,3 @@
-export * as layouts from "./layouts";
-export * from "./button";
-export * from "./card";
-export * from "./basket";
-export * from "./emptyBasket";
-export * from "./productCard";
+export * as UIKIT from "./ui-kit";
+export * as Icons from "./icons";
+export * as Layout from "./layout";

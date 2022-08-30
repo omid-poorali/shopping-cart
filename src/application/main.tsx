@@ -1,26 +1,26 @@
 import "../styles/index.scss";
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { ErrorBoundary } from "./errorBoundary";
-import { layouts } from "components";
-import { FallBack } from "./fallback";
-import NotFound from "pages/notFound";
-import * as allRoutes from "routes";
+import { ErrorBoundary } from "./error-boundary";
+import { LoadingFallBack } from "./loading-fallback";
+import { Layout } from "components";
+import NotFound from "pages/not-found";
+import * as AppRoutes from "routes";
 
 export const Application = () => {
   return (
     <ErrorBoundary>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={allRoutes.product.list} />} />
+          <Route path="/" element={<Navigate to={AppRoutes.Product.list} />} />
           {React.Children.toArray(
-            allRoutes.all.map((route) => (
+            AppRoutes.all.map((route) => (
               <Route path={route.path}
                 element={
-                  <React.Suspense fallback={<FallBack />}>
-                    <layouts.Desktop>
+                  <React.Suspense fallback={<LoadingFallBack />}>
+                    <Layout.Main>
                       {React.createElement(route.element)}
-                    </layouts.Desktop>
+                    </Layout.Main>
                   </React.Suspense>
                 } />
             ))

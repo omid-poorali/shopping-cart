@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
-import { Card, Button } from "components"
-import * as icons from "../icons";
+import { UIKIT } from "components"
+import * as Icons from "components/icons";
 
 type CustomProps = {
     className?: string;
@@ -15,7 +15,7 @@ type CustomProps = {
 type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomProps>
 
 
-export const Basket = (props: PropsType) => {
+export const ProductCard = (props: PropsType) => {
 
     const {
         className,
@@ -27,29 +27,29 @@ export const Basket = (props: PropsType) => {
         ...rest
     } = props;
 
-    const rootClassName = classnames("cuiBasket", className);
-    const imageWrapperClassName = "cuiBasket-imageWrapper";
-    const chipClassName = "cuiBasket-chip";
-    const detailsWrapperClassName = "cuiBasket-detailsWrapper";
-    const titleClassName = "cuiBasket-title";
-    const priceClassName = "cuiBasket-price";
-    const buttonClassName = "cuiBasket-button";
+    const rootClassName = classnames("productCard", className);
+    const imageWrapperClassName = "productCard-imageWrapper";
+    const chipClassName = "productCard-chip";
+    const detailsWrapperClassName = "productCard-detailsWrapper";
+    const titleClassName = "productCard-title";
+    const priceClassName = "productCard-price";
+    const buttonClassName = "productCard-button";
 
     return (
-        <Card
+        <UIKIT.Card
             className={rootClassName}
             {...rest}>
             <div className={imageWrapperClassName}>
                 <img src={imageSrc} alt={imageAlt} />
                 <div className={chipClassName}>
-                    <icons.Time />2 min
+                    <Icons.Time />2 min
                 </div>
             </div>
             <div className={detailsWrapperClassName}>
                 <h3 className={titleClassName}>{title}</h3>
                 <h4 className={priceClassName}>{`$ ${price} `}<strong>USD</strong></h4>
-                <Button onClick={onButtonClick} className={buttonClassName}>Add to basket</Button>
+                <UIKIT.Button onClick={onButtonClick} className={buttonClassName}>Add to basket</UIKIT.Button>
             </div>
-        </Card>
+        </UIKIT.Card>
     );
 };

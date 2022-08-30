@@ -1,6 +1,6 @@
-import * as product from "./product";
-export * as product from "./product";
+import * as Product from "./product";
+export * as Product from "./product";
 
 export const all = [
-    ...product.all
+    ...Product.all
 ]

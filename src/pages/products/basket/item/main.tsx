@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
-import { Card, Button } from "components"
-import * as icons from "components/icons";
+import { UIKIT } from "components"
+import * as Icons from "components/icons";
 
 type CustomProps = {
     className?: string;
@@ -15,7 +15,7 @@ type CustomProps = {
 type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomProps>
 
 
-export const ProductCard = (props: PropsType) => {
+export const BasketItem = (props: PropsType) => {
 
     const {
         className,
@@ -27,29 +27,29 @@ export const ProductCard = (props: PropsType) => {
         ...rest
     } = props;
 
-    const rootClassName = classnames("cuiProductCard", className);
-    const imageWrapperClassName = "cuiProductCard-imageWrapper";
-    const chipClassName = "cuiProductCard-chip";
-    const detailsWrapperClassName = "cuiProductCard-detailsWrapper";
-    const titleClassName = "cuiProductCard-title";
-    const priceClassName = "cuiProductCard-price";
-    const buttonClassName = "cuiProductCard-button";
+    const rootClassName = classnames("basketItem", className);
+    const imageWrapperClassName = "basketItem-imageWrapper";
+    const chipClassName = "basketItem-chip";
+    const detailsWrapperClassName = "basketItem-detailsWrapper";
+    const titleClassName = "basketItem-title";
+    const priceClassName = "basketItem-price";
+    const buttonClassName = "basketItem-button";
 
     return (
-        <Card
+        <UIKIT.Card
             className={rootClassName}
             {...rest}>
             <div className={imageWrapperClassName}>
                 <img src={imageSrc} alt={imageAlt} />
                 <div className={chipClassName}>
-                    <icons.Time />2 min
+                    <Icons.Time />2 min
                 </div>
             </div>
             <div className={detailsWrapperClassName}>
                 <h3 className={titleClassName}>{title}</h3>
                 <h4 className={priceClassName}>{`$ ${price} `}<strong>USD</strong></h4>
-                <Button onClick={onButtonClick} className={buttonClassName}>Add to basket</Button>
+                <UIKIT.Button onClick={onButtonClick} className={buttonClassName}>Add to basket</UIKIT.Button>
             </div>
-        </Card>
+        </UIKIT.Card>
     );
 };
