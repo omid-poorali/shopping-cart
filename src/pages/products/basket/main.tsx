@@ -1,4 +1,5 @@
-import { UIKIT } from "components"
+import { UIKIT } from "components";
+import { BasketItem } from "./item";
 
 
 export const Basket = () => {
@@ -6,7 +7,8 @@ export const Basket = () => {
 
     return (
         <UIKIT.Card className={rootClassName}>
-
+            <BasketItem />
+            <BasketItem />
         </UIKIT.Card>
     );
 };

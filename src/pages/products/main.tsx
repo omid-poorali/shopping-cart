@@ -2,7 +2,7 @@ import { Basket } from "./basket";
 
 export const Products = () => {
     return (
-        <div>
+        <div className="productsPage">
             <Basket />
         </div>
     )

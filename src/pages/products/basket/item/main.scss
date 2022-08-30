@@ -9,7 +9,7 @@
   &-imageWrapper {
     position: relative;
     border-radius: 0.625rem;
-    background-color: var(--product-card-image-background-color);
+    background-color: var(--image-background-color);
     position: relative;
     width: 100%;
     padding-top: 100%;
@@ -37,8 +37,8 @@
     margin-left: 0.6875rem;
     margin-bottom: 0.875rem;
     padding: 0.3125rem 0.625rem;
-    color: var(--product-card-chip-text-color);
-    background-color: var(--product-card-chip-background-color);
+    color: var(--text-color-lighter);
+    background-color: var(--card-background-color);
     border-radius: 3.125rem;
     font-size: $text-xs;
     font-weight: $font-medium;
