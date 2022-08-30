@@ -4,10 +4,12 @@ import { BasketItem } from "./item";
 
 export const Basket = () => {
     const rootClassName = "basket";
+    const dividerClassName = "basket-divider";
 
     return (
         <UIKIT.Card className={rootClassName}>
             <BasketItem />
+            <UIKIT.Divider className={dividerClassName} />
             <BasketItem />
         </UIKIT.Card>
     );

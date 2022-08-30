@@ -1,7 +1,12 @@
 .basket {
+  width: 21rem;
   padding: 1.875rem;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &-divider {
+    margin: 0.937rem 0;
+  }
 }

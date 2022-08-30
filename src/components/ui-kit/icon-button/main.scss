@@ -1,0 +1,34 @@
+.cuiIconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  &--secondary {
+    background-color: var(--secondary-900);
+
+    &:hover,
+    &:focus {
+      background-color: var(--secondary-700);
+    }
+
+    &:active {
+      background-color: var(--secondary-600);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:focus {
+      background-color: var(--secondary-300);
+    }
+  }
+
+  &--rounded {
+    border-radius: 50%;
+  }
+
+  &--medium {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+}
