@@ -1,0 +1,49 @@
+:root {
+    --primary-50: #e6e6e6;
+    --primary-100: #cccccc;
+    --primary-200: #b3b3b3;
+    --primary-300: #999999;
+    --primary-400: #808080;
+    --primary-500: #676767;
+    --primary-600: #4d4d4d;
+    --primary-700: #1a1a1a;
+    --primary-900: #010101;
+
+    --text-color: #474747;
+    --text-color-light: #6D6D7A;
+    --background-color: #F9F9F9;
+
+    --button-text-color: #fff;
+    --card-background-color: #fff;
+    --product-card-image-background-color:#EFEFEF;
+    --product-card-chip-background-color:#fff;
+    --product-card-chip-text-color:#AAB7C7;
+}
+
+$text-3xs: 0.5rem;
+$text-2xs: 0.625rem;
+$text-xs: 0.75rem;
+$text-sm: 0.875rem;
+$text-base: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.25rem;
+$text-2xl: 1.5rem;
+$text-3xl: 1.875rem;
+$text-4xl: 2.25rem;
+$text-5xl: 3rem;
+$text-6xl: 3.75rem;
+$text-7xl: 4.5rem;
+$text-8xl: 6rem;
+$text-9xl: 8rem;
+
+$font-thin: 100;
+$font-extralight: 200;
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extrabold: 800;
+$font-black: 900;
+
+$shadow-base: 0px 0.25rem 0.625rem rgba(0, 0, 0, 0.01);

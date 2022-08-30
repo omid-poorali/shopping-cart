@@ -1,0 +1,18 @@
+@import "./variables";
+@import "./reset";
+@import "base";
+@import "breakpoints";
+
+
+// layouts and components
+@import "../application/fallback/main.scss";
+@import "../components/layouts/desktop/main.scss";
+@import "../components/button/main.scss";
+@import "../components/card/main.scss";
+@import "../components/basket/main.scss";
+@import "../components/emptyBasket/main.scss";
+@import "../components/productCard/main.scss";
+
+// pages
+@import "../pages/notFound/main.scss";
+@import "../pages/systemError/main.scss"

@@ -1,0 +1,18 @@
+.cuiEmptyBasket {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-image {
+    padding: 6.25rem 5rem;
+  }
+
+  &-text {
+    color: var(--text-color-light);
+    font-weight: $font-light;
+    font-size: $text-base;
+    margin-top: 5.625rem;
+    margin-bottom: 6.25rem;
+  }
+}
