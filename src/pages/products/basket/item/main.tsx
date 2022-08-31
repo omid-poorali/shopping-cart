@@ -6,8 +6,9 @@ type CustomProps = {
     className?: string;
     imageSrc?: string;
     imageAlt?: string;
-    title?: string;
+    name?: string;
     price?: string;
+    onDeleteIconClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomProps>
@@ -19,8 +20,9 @@ export const BasketItem = (props: PropsType) => {
         className,
         imageSrc = "/img/products/mug.webp",
         imageAlt = "Mugr",
-        title = "Mugr",
+        name = "Mugr",
         price = "150.00",
+        onDeleteIconClick,
         ...rest
     } = props;
 
@@ -28,7 +30,7 @@ export const BasketItem = (props: PropsType) => {
     const imageWrapperClassName = "basketItem-imageWrapper";
     const deleteButtonClassName = "basketItem-deleteButton";
     const detailsWrapperClassName = "basketItem-detailsWrapper";
-    const titleClassName = "basketItem-title";
+    const nameClassName = "basketItem-name";
     const priceClassName = "basketItem-price";
 
     return (
@@ -37,12 +39,12 @@ export const BasketItem = (props: PropsType) => {
             {...rest}>
             <div className={imageWrapperClassName}>
                 <img src={imageSrc} alt={imageAlt} />
-                <UIKIT.IconButton className={deleteButtonClassName} color="secondary">
+                <UIKIT.IconButton onClick={onDeleteIconClick} className={deleteButtonClassName} color="secondary">
                     <Icons.Trash />
                 </UIKIT.IconButton>
             </div>
             <div className={detailsWrapperClassName}>
-                <h3 className={titleClassName}>{title}</h3>
+                <h3 className={nameClassName}>{name}</h3>
                 <h4 className={priceClassName}>{`$ ${price} `}<strong>USD</strong></h4>
             </div>
         </div>

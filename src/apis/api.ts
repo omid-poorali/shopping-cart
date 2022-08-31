@@ -19,7 +19,7 @@ class API {
     constructor() {
         let service = axios.create({});
         service.defaults.baseURL = process.env.REACT_APP_BASE_URL
-        service.defaults.headers.common["accept"] = "application/vnd.github+json";
+        service.defaults.headers.common["Content-Type"] = "application/json";
         service.interceptors.response.use(this.handleSuccessResponse, this.handleErrorResponse);
 
         this.service = service;
