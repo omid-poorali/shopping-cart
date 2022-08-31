@@ -25,9 +25,10 @@ export const Products = () => {
             name: product.name,
             poster: product.poster,
             price: product.price,
-            expiredAt: Utils.Date.nowInSeconds() + product.orderLimitTime
+            expiredAt: Utils.Date.timestampInSeconds() + product.orderLimitTime
         });
     }
+    
 
     const rootClassName = "products";
     const wrapperClassName = "products-wrapper";
@@ -44,6 +45,7 @@ export const Products = () => {
                         price={product.price}
                         imageSrc={product.poster}
                         imageAlt={product.name}
+                        orderLimitTime={product.orderLimitTime}
                         onButtonClick={() => handleProductButtonClick(product)}
                     />
                 )))}

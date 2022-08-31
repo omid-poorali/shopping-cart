@@ -8,7 +8,7 @@ export const getProducts = (): Promise<Models.Product[]> => {
                 name: "Mugr",
                 price: "150.00",
                 poster: "./img/products/mug.webp",
-                orderLimitTime: 120
+                orderLimitTime: 60
             },
             {
                 id: "1",

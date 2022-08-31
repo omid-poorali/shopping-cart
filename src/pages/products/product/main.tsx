@@ -9,6 +9,7 @@ type CustomProps = {
     imageAlt?: string;
     name?: string;
     price?: string;
+    orderLimitTime?: number;
     onButtonClick?: React.MouseEventHandler<HTMLButtonElement>
 };
 
@@ -23,6 +24,7 @@ export const Product = (props: PropsType) => {
         imageAlt = "Mugr",
         name = "Mugr",
         price = "150.00",
+        orderLimitTime = 0,
         onButtonClick,
         ...rest
     } = props;
@@ -42,7 +44,7 @@ export const Product = (props: PropsType) => {
             <div className={imageWrapperClassName}>
                 <img src={imageSrc} alt={imageAlt} />
                 <div className={chipClassName}>
-                    <Icons.Time />2 min
+                    <Icons.Time />{`${Math.floor(orderLimitTime / 60)} min`}
                 </div>
             </div>
             <div className={detailsWrapperClassName}>
