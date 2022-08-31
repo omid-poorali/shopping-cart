@@ -7,7 +7,7 @@ type CustomProps = {
     className?: string;
     imageSrc?: string;
     imageAlt?: string;
-    title?: string;
+    name?: string;
     price?: string;
     onButtonClick?: React.MouseEventHandler<HTMLButtonElement>
 };
@@ -15,25 +15,25 @@ type CustomProps = {
 type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomProps>
 
 
-export const ProductCard = (props: PropsType) => {
+export const Product = (props: PropsType) => {
 
     const {
         className,
         imageSrc = "/img/products/mug.webp",
         imageAlt = "Mugr",
-        title = "Mugr",
+        name = "Mugr",
         price = "150.00",
         onButtonClick,
         ...rest
     } = props;
 
-    const rootClassName = classnames("productCard", className);
-    const imageWrapperClassName = "productCard-imageWrapper";
-    const chipClassName = "productCard-chip";
-    const detailsWrapperClassName = "productCard-detailsWrapper";
-    const titleClassName = "productCard-title";
-    const priceClassName = "productCard-price";
-    const buttonClassName = "productCard-button";
+    const rootClassName = classnames("product", className);
+    const imageWrapperClassName = "product-imageWrapper";
+    const chipClassName = "product-chip";
+    const detailsWrapperClassName = "product-detailsWrapper";
+    const nameClassName = "product-name";
+    const priceClassName = "product-price";
+    const buttonClassName = "product-button";
 
     return (
         <UIKIT.Card
@@ -46,7 +46,7 @@ export const ProductCard = (props: PropsType) => {
                 </div>
             </div>
             <div className={detailsWrapperClassName}>
-                <h3 className={titleClassName}>{title}</h3>
+                <h3 className={nameClassName}>{name}</h3>
                 <h4 className={priceClassName}>{`$ ${price} `}<strong>USD</strong></h4>
                 <UIKIT.Button onClick={onButtonClick} className={buttonClassName}>Add to basket</UIKIT.Button>
             </div>

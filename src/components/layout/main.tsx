@@ -6,6 +6,6 @@ type PropsType = {
 
 export const Main = (props: PropsType) => {
     return (
-        <main>{props.children}</main>
+        <main className="cuiMainLayout">{props.children}</main>
     )
 };

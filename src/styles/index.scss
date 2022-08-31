@@ -7,6 +7,7 @@
 // common components styles
 @import "../application/error-boundary/fallback/main.scss";
 @import "../application/loading-fallback/main.scss";
+@import "../components/layout/main.scss";
 @import "../components/ui-kit/button/main.scss";
 @import "../components/ui-kit/icon-button/main.scss";
 @import "../components/ui-kit/card/main.scss";
@@ -14,8 +15,8 @@
 
 // page components styles
 @import "../pages/products/main.scss";
-@import "../pages/products/empty-basket/main.scss";
 @import "../pages/products/product/main.scss";
+@import "../pages/products/basket/empty/main.scss";
 @import "../pages/products/basket/main.scss";
 @import "../pages/products/basket/item/main.scss";
 @import "../pages/not-found/main.scss";

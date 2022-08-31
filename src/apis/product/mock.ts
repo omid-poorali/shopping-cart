@@ -7,55 +7,55 @@ export const getProducts = (): Promise<Models.Product[]> => {
                 name: "Mugr",
                 price: "150.00",
                 poster: "./img/products/mug.webp",
-                orderLimitTime: 2000
+                orderLimitTime: 120
             },
             {
                 name: "Sqoop",
                 price: "112.99",
                 poster: "./img/products/sqoop.webp",
-                orderLimitTime: 6000
+                orderLimitTime: 360
             },
             {
                 name: "W glass",
                 price: "82.00",
                 poster: "./img/products/wglass.webp",
-                orderLimitTime: 3000
+                orderLimitTime: 180
             },
             {
                 name: "Eraser Ball",
                 price: "171.00",
                 poster: "./img/products/eraser.webp",
-                orderLimitTime: 9000
+                orderLimitTime: 540
             },
             {
                 name: "Exacto Scissors",
                 price: "24.00",
                 poster: "./img/products/exacto.webp",
-                orderLimitTime: 1000
+                orderLimitTime: 60
             },
             {
                 name: "Latte Brewing S.O.P",
                 price: "95.00",
                 poster: "./img/products/latte.webp",
-                orderLimitTime: 2000
+                orderLimitTime: 120
             },
             {
                 name: "Pencil",
                 price: "114.00",
                 poster: "./img/products/pencil.webp",
-                orderLimitTime: 4500
+                orderLimitTime: 450
             },
             {
                 name: "Scissors",
                 price: "52.00",
                 poster: "./img/products/scissors.webp",
-                orderLimitTime: 1000
+                orderLimitTime: 60
             },
             {
                 name: "Paperweight",
                 price: "27.00",
                 poster: "./img/products/paperweight.webp",
-                orderLimitTime: 3000
+                orderLimitTime: 180
             }
         ]);
     });
