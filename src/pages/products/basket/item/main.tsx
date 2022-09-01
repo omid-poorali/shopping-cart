@@ -1,14 +1,17 @@
 import React from "react";
 import classnames from "classnames";
 import { UIKIT, Icons } from "components"
+import ImagePlaceholder from "assets/image-placeholder.svg"
 
 type CustomProps = {
+    id: string;
+    productId: string;
     className?: string;
     imageSrc?: string;
     imageAlt?: string;
     name?: string;
     price?: string;
-    onDeleteIconClick?: React.MouseEventHandler<HTMLButtonElement>;
+    onDeleteButtonClick?: (id: string) => void;
 };
 
 type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomProps>
@@ -17,12 +20,14 @@ type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomPro
 export const BasketItem = (props: PropsType) => {
 
     const {
+        id,
+        productId,
         className,
-        imageSrc = "/img/products/mug.webp",
-        imageAlt = "Mugr",
-        name = "Mugr",
-        price = "150.00",
-        onDeleteIconClick,
+        imageSrc,
+        imageAlt = "",
+        name = "",
+        price = "",
+        onDeleteButtonClick,
         ...rest
     } = props;
 
@@ -35,11 +40,16 @@ export const BasketItem = (props: PropsType) => {
 
     return (
         <div
+            data-testid={`basketItem-${productId}`}
             className={rootClassName}
             {...rest}>
             <div className={imageWrapperClassName}>
-                <img src={imageSrc} alt={imageAlt} />
-                <UIKIT.IconButton onClick={onDeleteIconClick} className={deleteButtonClassName} color="secondary">
+                <img src={imageSrc ?? ImagePlaceholder} alt={imageAlt} />
+                <UIKIT.IconButton
+                    data-testid={`deleteBasketItem-${productId}`}
+                    onClick={() => onDeleteButtonClick?.(id)}
+                    className={deleteButtonClassName}
+                    color="secondary">
                     <Icons.Trash />
                 </UIKIT.IconButton>
             </div>

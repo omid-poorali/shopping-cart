@@ -19,16 +19,20 @@ export const Products = () => {
     }, []);
 
 
-    const handleProductButtonClick = (product: Models.Product) => {
-        basket.add({
-            id: uuidv4(),
-            name: product.name,
-            poster: product.poster,
-            price: product.price,
-            expiredAt: Utils.Date.timestampInSeconds() + product.orderLimitTime
-        });
+    const handleAddButtonClick = (productId: string) => {
+        const target = products.find(product => product.id === productId);
+        if (target) {
+            basket.addItem({
+                id: uuidv4(),
+                productId: target.id,
+                name: target.name,
+                poster: target.poster,
+                price: target.price,
+                expiredAt: Utils.Date.getUnixTime() + target.orderLimitTime
+            });
+        }
     }
-    
+
 
     const rootClassName = "products";
     const wrapperClassName = "products-wrapper";
@@ -41,12 +45,13 @@ export const Products = () => {
                 {React.Children.toArray(products.map(product => (
                     <Product
                         className={itemClassName}
+                        id={product.id}
                         name={product.name}
                         price={product.price}
                         imageSrc={product.poster}
                         imageAlt={product.name}
                         orderLimitTime={product.orderLimitTime}
-                        onButtonClick={() => handleProductButtonClick(product)}
+                        onAddButtonClick={handleAddButtonClick}
                     />
                 )))}
             </div>

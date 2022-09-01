@@ -9,7 +9,6 @@ const ConstantsList = Object.freeze({
     ACTION_BAD_GATEWAY: 'Bad Gateway',
     ACTION_SERVICE_UNAVAILABLE: 'The service is unavailable',
     ACTION_REQUEST_TIMED_OUT: 'Request Timed Out',
-    ACTION_TOO_MANY: 'Too Many Requests',
     ACTION_INSUFFICIENT_STORAGE: 'Insuffucient Storage',
 });
 

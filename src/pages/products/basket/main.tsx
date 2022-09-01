@@ -1,20 +1,19 @@
+import React from "react";
 import { UIKIT } from "components";
 import { useBasket } from "application";
 import { BasketItem } from "./item";
-import React from "react";
 import { EmptyBasket } from "./empty";
-
 
 export const Basket = () => {
 
     const basket = useBasket();
 
-    const handleOnDeleteIconClick = (id: string) => {
-        basket.remove(id);
+    const handleDeleteButtonClick = (id: string) => {
+        basket.removeItem(id);
     }
 
-    // if basket is empty
-    if (basket.products.length === 0) {
+    // if the basket is empty it will render a placeholder
+    if (basket.basketItems.length === 0) {
         return (
             <EmptyBasket />
         )
@@ -25,15 +24,17 @@ export const Basket = () => {
 
     return (
         <UIKIT.Card className={rootClassName}>
-            {React.Children.toArray(basket.products.map((product, index) => (
+            {React.Children.toArray(basket.basketItems.map((basketItem, index) => (
                 <>
                     {index > 0 && <UIKIT.Divider className={dividerClassName} />}
                     <BasketItem
-                        name={product.name}
-                        price={product.price}
-                        imageSrc={product.poster}
-                        imageAlt={product.name}
-                        onDeleteIconClick={() => handleOnDeleteIconClick(product.id)}
+                        id={basketItem.id}
+                        productId={basketItem.productId}
+                        name={basketItem.name}
+                        price={basketItem.price}
+                        imageSrc={basketItem.poster}
+                        imageAlt={basketItem.name}
+                        onDeleteButtonClick={handleDeleteButtonClick}
                     />
                 </>
             )))}

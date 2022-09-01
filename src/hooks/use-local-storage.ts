@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
+import * as Utils from "utils";
 
 export const useLocalStorage = <T>(key: string, initialValue: T) => {
 
-    const getInitialValue = useCallback(() => {
-        if (typeof window === "undefined") {
+    const syncValueWithStorage = useCallback(() => {
+        if (!Utils.Dom.isBrowser) {
             return initialValue;
         }
         try {
@@ -20,12 +21,12 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
 
     // State to store our value
     // Pass initial state function to useState so logic is only executed once
-    const [storedValue, setStoredValue] = useState<T>(getInitialValue);
+    const [storedValue, setStoredValue] = useState<T>(syncValueWithStorage);
 
     useEffect(() => {
         try {
             // Save to local storage
-            if (typeof window !== "undefined") {
+            if (Utils.Dom.isBrowser) {
                 window.localStorage.setItem(key, JSON.stringify(storedValue));
             }
         } catch (error) {
@@ -35,16 +36,23 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
     }, [key, storedValue])
 
     useEffect(() => {
+
         const visibilityChangeListener = () => {
             if (!document.hidden) {
-                setStoredValue(getInitialValue)
+                setStoredValue(syncValueWithStorage)
             }
         }
-        
-        document.addEventListener("visibilitychange", visibilityChangeListener);
 
-        return () => document.removeEventListener("visibilityChange", visibilityChangeListener);
-    }, [getInitialValue, setStoredValue])
+        if (Utils.Dom.isBrowser) {
+            document.addEventListener("visibilitychange", visibilityChangeListener);
+        }
+
+        return () => {
+            if (Utils.Dom.isBrowser) {
+                document.removeEventListener("visibilityChange", visibilityChangeListener);
+            }
+        }
+    }, [syncValueWithStorage, setStoredValue])
 
     return [storedValue, setStoredValue] as const;
 }

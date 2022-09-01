@@ -1,16 +1,19 @@
 import React from "react";
 import classnames from "classnames";
-import { UIKIT } from "components"
+import { UIKIT } from "components";
+import ImagePlaceholder from "assets/image-placeholder.svg"
 import * as Icons from "components/icons";
+import * as Utils from "utils";
 
 type CustomProps = {
+    id: string;
     className?: string;
     imageSrc?: string;
     imageAlt?: string;
     name?: string;
     price?: string;
     orderLimitTime?: number;
-    onButtonClick?: React.MouseEventHandler<HTMLButtonElement>
+    onAddButtonClick?: (id: string) => void;
 };
 
 type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomProps>
@@ -19,13 +22,14 @@ type PropsType = CustomProps & Omit<React.ComponentProps<'div'>, keyof CustomPro
 export const Product = (props: PropsType) => {
 
     const {
+        id,
         className,
-        imageSrc = "/img/products/mug.webp",
-        imageAlt = "Mugr",
-        name = "Mugr",
-        price = "150.00",
+        imageSrc,
+        imageAlt = "",
+        name = "",
+        price = "",
         orderLimitTime = 0,
-        onButtonClick,
+        onAddButtonClick,
         ...rest
     } = props;
 
@@ -39,18 +43,24 @@ export const Product = (props: PropsType) => {
 
     return (
         <UIKIT.Card
+            data-testid={`product-${id}`}
             className={rootClassName}
             {...rest}>
             <div className={imageWrapperClassName}>
-                <img src={imageSrc} alt={imageAlt} />
+                <img src={imageSrc ?? ImagePlaceholder} alt={imageAlt} />
                 <div className={chipClassName}>
-                    <Icons.Time />{`${Math.floor(orderLimitTime / 60)} min`}
+                    <Icons.Time />{`${Utils.Date.secondsToMinutes(orderLimitTime)} min`}
                 </div>
             </div>
             <div className={detailsWrapperClassName}>
                 <h3 className={nameClassName}>{name}</h3>
                 <h4 className={priceClassName}>{`$ ${price} `}<strong>USD</strong></h4>
-                <UIKIT.Button onClick={onButtonClick} className={buttonClassName}>Add to basket</UIKIT.Button>
+                <UIKIT.Button
+                    data-testid={`addProductButton-${id}`}
+                    onClick={() => onAddButtonClick?.(id)}
+                    className={buttonClassName}>
+                    Add to basket
+                </UIKIT.Button>
             </div>
         </UIKIT.Card>
     );
