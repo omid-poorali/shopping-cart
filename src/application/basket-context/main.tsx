@@ -6,7 +6,7 @@ import * as Models from "models";
 
 type BasketContext = {
     basketItems: Models.BasketItem[];
-    addItem: (product: Models.BasketItem) => void;
+    addItem: (basketItem: Models.BasketItem) => void;
     removeItem: (id: string) => void;
 }
 
@@ -24,13 +24,22 @@ type PropsType = {
 export const BasketProvider = ({ children }: PropsType) => {
 
     const checkExpirationIntervalRef = useRef<NodeJS.Timer | null>();
+    const basketItemsRef = useRef<Models.BasketItem[]>([]);
     const [basketItems, setBasketItems] = useLocalStorage<Models.BasketItem[]>(Names.basketStorage, []);
+
+    useEffect(() => {
+        basketItemsRef.current = basketItems;
+    }, [basketItems])
 
     useEffect(() => {
         if (!checkExpirationIntervalRef.current) {
             checkExpirationIntervalRef.current = setInterval(() => {
-                const filterOrNot = (product: Models.BasketItem) => !Utils.Date.isUnixExpired(product.expiredAt);
-                setBasketItems(prevData => prevData.filter(filterOrNot));
+                basketItemsRef.current.forEach(basketItem => {
+                    if (Utils.Date.isUnixExpired(basketItem.expiredAt)) {
+                        setBasketItems(prevData => prevData.filter(el => el.id !== basketItem.id));
+                    }
+                })
+
             }, 1000);
         }
         return () => {
@@ -39,15 +48,15 @@ export const BasketProvider = ({ children }: PropsType) => {
                 checkExpirationIntervalRef.current = null;
             }
         }
-    }, [checkExpirationIntervalRef, setBasketItems]);
+    }, [checkExpirationIntervalRef, basketItemsRef, setBasketItems]);
 
 
-    const addItem = (product: Models.BasketItem) => {
-        setBasketItems(prevData => prevData.concat(product));
+    const addItem = (basketItem: Models.BasketItem) => {
+        setBasketItems(prevData => prevData.concat(basketItem));
     }
 
     const removeItem = (id: string) => {
-        setBasketItems(prevData => prevData.filter(product => product.id !== id));
+        setBasketItems(prevData => prevData.filter(basketItem => basketItem.id !== id));
     }
 
     return (
