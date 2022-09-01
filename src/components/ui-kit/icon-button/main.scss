@@ -4,6 +4,27 @@
   align-items: center;
   border: none;
 
+  
+  &--primary {
+    background-color: var(--primary-900);
+    color: var(--button-text-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary-700);
+    }
+
+    &:active {
+      background-color: var(--primary-600);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:focus {
+      background-color: var(--primary-300);
+    }
+  }
+  
   &--secondary {
     background-color: var(--secondary-900);
 
